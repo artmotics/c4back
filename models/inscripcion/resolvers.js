@@ -1,6 +1,6 @@
-import { ProjectModel } from '../proyecto/proyecto.js';
-import { UserModel } from '../usuario/usuario.js';
-import { InscriptionModel } from './inscripcion.js';
+import { ProjectModel } from "../proyecto/proyecto.js";
+import { UserModel } from "../usuario/usuario.js";
+import { InscriptionModel } from "./inscripcion.js";
 
 const resolverInscripciones = {
   Inscripcion: {
@@ -15,8 +15,10 @@ const resolverInscripciones = {
     Inscripciones: async (parent, args, context) => {
       let filtro = {};
       if (context.userData) {
-        if (context.userData.rol === 'LIDER') {
-          const projects = await ProjectModel.find({ lider: context.userData._id });
+        if (context.userData.rol === "LIDER") {
+          const projects = await ProjectModel.find({
+            lider: context.userData._id,
+          });
           const projectList = projects.map((p) => p._id.toString());
           filtro = {
             proyecto: {
@@ -45,7 +47,7 @@ const resolverInscripciones = {
       const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(
         args.id,
         {
-          estado: 'ACEPTADO',
+          estado: "ACEPTADO",
           fechaIngreso: Date.now(),
         },
         { new: true }

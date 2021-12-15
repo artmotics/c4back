@@ -1,6 +1,6 @@
-import { InscriptionModel } from '../inscripcion/inscripcion.js';
-import { UserModel } from '../usuario/usuario.js';
-import { ProjectModel } from './proyecto.js';
+import { InscriptionModel } from "../inscripcion/inscripcion.js";
+import { UserModel } from "../usuario/usuario.js";
+import { ProjectModel } from "./proyecto.js";
 
 const resolversProyecto = {
   Proyecto: {
@@ -62,7 +62,8 @@ const resolversProyecto = {
         args.idProyecto,
         {
           $set: {
-            [`objetivos.${args.indexObjetivo}.descripcion`]: args.campos.descripcion,
+            [`objetivos.${args.indexObjetivo}.descripcion`]:
+              args.campos.descripcion,
             [`objetivos.${args.indexObjetivo}.tipo`]: args.campos.tipo,
           },
         },

@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from "apollo-server-express";
 
 const tiposProyecto = gql`
   type Objetivo {
@@ -59,7 +59,11 @@ const tiposProyecto = gql`
 
     crearObjetivo(idProyecto: String!, campos: camposObjetivo!): Proyecto
 
-    editarObjetivo(idProyecto: String!, indexObjetivo: Int!, campos: camposObjetivo!): Proyecto
+    editarObjetivo(
+      idProyecto: String!
+      indexObjetivo: Int!
+      campos: camposObjetivo!
+    ): Proyecto
 
     eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
   }

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 // import { Enum_Rol, Enum_EstadoUsuario } from '../enums/enums';
 
@@ -27,7 +27,7 @@ const userSchema = new Schema({
       //     return false;
       //   }
       // },
-      message: 'El formato del correo electrónico está malo.',
+      message: "El formato del correo electrónico está malo.",
     },
   },
   password: {
@@ -47,36 +47,40 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  foto: {
+    type: String,
+    required: false,
+  },
   rol: {
     type: String,
     required: true,
-    enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
+    enum: ["ESTUDIANTE", "LIDER", "ADMINISTRADOR"],
   },
   estado: {
     type: String,
-    enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
-    default: 'PENDIENTE',
+    enum: ["PENDIENTE", "AUTORIZADO", "NO_AUTORIZADO"],
+    default: "PENDIENTE",
   },
 });
 
-userSchema.virtual('proyectosLiderados', {
-  ref: 'Proyecto',
-  localField: '_id',
-  foreignField: 'lider',
+userSchema.virtual("proyectosLiderados", {
+  ref: "Proyecto",
+  localField: "_id",
+  foreignField: "lider",
 });
 
-userSchema.virtual('avancesCreados', {
-  ref: 'Avance',
-  localField: '_id',
-  foreignField: 'creadoPor',
+userSchema.virtual("avancesCreados", {
+  ref: "Avance",
+  localField: "_id",
+  foreignField: "creadoPor",
 });
 
-userSchema.virtual('inscripciones', {
-  ref: 'Inscripcion',
-  localField: '_id',
-  foreignField: 'estudiante',
+userSchema.virtual("inscripciones", {
+  ref: "Inscripcion",
+  localField: "_id",
+  foreignField: "estudiante",
 });
 
-const UserModel = model('User', userSchema);
+const UserModel = model("User", userSchema);
 
 export { UserModel };
