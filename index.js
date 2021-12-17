@@ -39,6 +39,10 @@ app.use(express.json());
 
 app.use(cors());
 
+app.get("/healt-check", (req,  resp)=>{
+  resp.json("Server is ok")
+})
+
 app.listen({ port: process.env.PORT || 4000 }, async () => {
   await conectarBD();
   await server.start();
